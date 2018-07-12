@@ -11,13 +11,14 @@ class PostsController < ApplicationController
   def update
     #binding.pry
   @post = Post.find(params[:id])
-  if Post.new(params.require(:post).permit(:title, :content, :category)).valid?
-    @post.update(params)
-    @post.save
+  @post.update(post_params)
+  #binding.pry
+  if @post.valid?
     redirect_to post_path(@post)
-  else 
+  else
+    #binding.pry
     render :edit
-  end 
+  end
   end
 
   private

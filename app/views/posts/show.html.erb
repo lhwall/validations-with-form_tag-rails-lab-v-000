@@ -1,5 +1,12 @@
 <h2><%= @post.title %></h2>
 
+<% if @post.errors.any? %>
+<h2>There were some errors: </h2>
+<ul><% @person.errors.full_messages.each do |message| %>
+  <li><%= message %> </li>
+  <%end%>
+<ul>
+  <%end%>
 <%= link_to "edit", edit_post_path(@post) %>
 <p>A <%= @post.category %> post.</p>
 <hr />
